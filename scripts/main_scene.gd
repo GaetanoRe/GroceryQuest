@@ -1,20 +1,17 @@
 extends Node
 
-var player_spawn_loc_x : float
-var player_spawn_loc_y : float
+class_name MainScene
 
+var world
+var world_spawn
 var player : Player
 
 func _ready() -> void:
-	spawn_player()
-	pass
+	var world_scene = load("res://scenes/generation_scenes/world.tscn")
+	world_scene.instantiate()
+	add_child(world)
 
 func _process(delta) -> void:
 	if(Input.is_action_just_pressed("quit")) :
 		get_tree().quit()
 
-
-
-
-func spawn_player() -> void:
-	pass

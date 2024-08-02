@@ -4,7 +4,11 @@ class_name Player
 
 const SPEED : float = 20.0
 
+var spawn_loc : Vector2
+
 func _ready():
+	spawn_loc = Vector2.ZERO
+	# somehow, make it spawn...
 	pass
 
 func _process(delta):
