@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bilijqk4xkux4"]
+[gd_scene load_steps=5 format=3 uid="uid://bilijqk4xkux4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_brhwy"]
 [ext_resource type="Texture2D" uid="uid://cmr1yfws58ofn" path="res://icon.svg" id="2_raxmv"]
@@ -6,7 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtylo"]
 size = Vector2(6, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2tflk"]
+radius = 6.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_brhwy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -14,6 +19,19 @@ scale = Vector2(0.05, 0.052)
 texture = ExtResource("2_raxmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
 shape = SubResource("RectangleShape2D_wtylo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+shape = SubResource("CircleShape2D_2tflk")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
