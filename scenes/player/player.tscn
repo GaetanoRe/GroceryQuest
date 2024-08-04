@@ -25,13 +25,13 @@ shape = SubResource("RectangleShape2D_wtylo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="player_hitbox" type="Area2D" parent="."]
+[node name="PlayerHurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtbox"]
 shape = SubResource("CircleShape2D_2tflk")
 
-[node name="attack_cooldown" type="Timer" parent="."]
+[node name="AttackCooldown" type="Timer" parent="."]
 
-[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
-[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_body_entered"]
+[connection signal="body_exited" from="PlayerHurtbox" to="." method="_on_player_hurt4box_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbdj3lxxu5qb1"]
+
+[ext_resource type="Texture2D" uid="uid://bp8fpwgh7cwx3" path="res://assets/ui/healthProgBottom.png" id="1_3el8q"]
+[ext_resource type="Texture2D" uid="uid://c3e4bqviojr4g" path="res://assets/ui/healthProgTop.png" id="2_pecw0"]
+[ext_resource type="Texture2D" uid="uid://corr3j5x5ldib" path="res://assets/ui/healthProgProgress.png" id="3_8xd45"]
+[ext_resource type="Script" path="res://scenes/UI/player_health.gd" id="4_643q5"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerHealth Prog" type="TextureProgressBar" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture_under = ExtResource("1_3el8q")
+texture_over = ExtResource("2_pecw0")
+texture_progress = ExtResource("3_8xd45")
+script = ExtResource("4_643q5")
