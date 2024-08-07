@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomData" load_steps=2 format=3 uid="uid://de00ak8r2ut00"]
+
+[ext_resource type="Script" path="res://scripts/rooms/room_data.gd" id="1_p5kbd"]
+
+[resource]
+script = ExtResource("1_p5kbd")
+layout = "NSE"
+room_length = 0
+room_width = 0
