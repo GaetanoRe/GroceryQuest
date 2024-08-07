@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_uxv53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ryj"]
-size = Vector2(44, 38)
+size = Vector2(56, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkegf"]
 size = Vector2(6, 6)
@@ -13,7 +13,6 @@ size = Vector2(6, 6)
 radius = 6.0
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(0, -2)
 script = ExtResource("1_uxv53")
 metadata/_edit_group_ = true
 
