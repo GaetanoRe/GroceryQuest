@@ -61,3 +61,4 @@ func load_new_room(dir : String):
 		entered_east.emit()
 	if(dir_low == "west"):
 		entered_west.emit()
+

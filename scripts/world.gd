@@ -4,7 +4,7 @@ extends Node2D
 class_name World
 
 @export var curr_room : Room
-var player
+var player : Player
 
 func _ready():
 	spawn_player()
@@ -16,16 +16,17 @@ func _ready():
 
 
 func change_room_scene_north():
-	pass
+	curr_room.get_tree().change_scene_to_packed(curr_room.room_north)
+	player.global_position 
 
 func change_room_scene_south():
-	pass
+	curr_room.get_tree().change_scene_to_packed(curr_room.room_south)
 
 func change_room_scene_east():
-	pass
+	curr_room.get_tree().change_scene_to_packed(curr_room.room_east)
 
 func change_room_scene_west():
-	pass
+	curr_room.get_tree().change_scene_to_packed(curr_room.room_west)
 
 func spawn_player():
 	var player_scene = load("res://scenes/player/player.tscn")

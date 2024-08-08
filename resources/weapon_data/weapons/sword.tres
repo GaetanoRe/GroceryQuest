@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cffwjgkd5vpm"]
+
+[ext_resource type="Script" path="res://scripts/player/weapon_data.gd" id="1_muvjt"]
+[ext_resource type="Texture2D" uid="uid://bn8s541u8ygu7" path="res://assets/GQ_SwordAnim.png" id="2_338pe"]
+
+[resource]
+script = ExtResource("1_muvjt")
+type = 0
+sprite = ExtResource("2_338pe")
+hitbox = Vector2(0, 0)
+animation_time = 0.0
