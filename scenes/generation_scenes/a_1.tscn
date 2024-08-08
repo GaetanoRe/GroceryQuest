@@ -1,8 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6t20y021nmvb"]
+[gd_scene load_steps=4 format=3 uid="uid://c6t20y021nmvb"]
 
 [ext_resource type="Script" path="res://scripts/rooms/room.gd" id="1_twqhp"]
-[ext_resource type="Resource" uid="uid://de00ak8r2ut00" path="res://resources/gen_data/room_data.tres" id="2_4yfks"]
+[ext_resource type="Texture2D" uid="uid://cmr1yfws58ofn" path="res://icon.svg" id="2_f2kdu"]
+[ext_resource type="PackedScene" uid="uid://chsj7f8vcnqds" path="res://scenes/enemy.tscn" id="4_f7lqy"]
 
 [node name="A1" type="Node2D"]
 script = ExtResource("1_twqhp")
-room_data = ExtResource("2_4yfks")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(29, 21)
+scale = Vector2(0.257813, 0.25)
+texture = ExtResource("2_f2kdu")
+
+[node name="Enemy" parent="." instance=ExtResource("4_f7lqy")]
+position = Vector2(-4, 28)
