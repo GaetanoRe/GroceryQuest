@@ -10,7 +10,6 @@ var enemy_attack_cooldown = true
 var health = 100
 var player_alive = true	
 var current_dir = "none"
-
 var attack_ip = false
 
 var spawn_loc : Vector2
@@ -21,7 +20,10 @@ signal hurt
 func _ready():
 	spawn_loc = Vector2.ZERO
 	# somehow, make it spawn...
-	pass
+	$melee_weapons/sword_up.visible = false
+	$melee_weapons/sword_side.visible = false
+	$melee_weapons/sword_down.visible = false
+	$melee_weapons/sword_left.visible = false
 
 func _process(delta):
 	pass
@@ -39,17 +41,16 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("walk_down"):
 		current_dir = "down"
 		player_animation(1)
+	elif Input.is_action_pressed("walk_right"):
+		current_dir = "right"
+		player_animation(1)
+	elif Input.is_action_pressed("walk_left"):
+		current_dir = "left"
+		player_animation(1)
 	else:
 		player_animation(0)
 		
-#We will add these when we get the side walk animation
-	#elif Input.is_action_pressed("walk_right"):
-		#current_dir = "right"
-		#player_animation(1)
-	#elif Input.is_action_pressed("walk_left"):
-		#current_dir = "left"
-		#player_animation(1)
-		
+	attack()
 	enemy_attack()
 	move_and_slide()
 	
@@ -65,19 +66,19 @@ func player_animation(movement):
 	var anim = $character_sprite
 	
 	#Animation for left and right 
-	#if dir == "right":
-		#anim.flip_h = false
-		#if movement == 1:
-			#anim.play("side_walk")
-		#elif movement == 0:
-			#anim.play("side_idle")
+	if dir == "right":
+		anim.flip_h = false
+		if movement == 1:
+			anim.play("side_walk")
+		elif movement == 0:
+			anim.play("side_idle")
 			
-	#if dir == "left":
-		#anim.flip_h = true
-		#if movement == 1:
-			#anim.play("side_walk")
-		#elif movement == 0:
-			#anim.play("side_idle")
+	if dir == "left":
+		anim.flip_h = true
+		if movement == 1:
+			anim.play("side_walk")
+		elif movement == 0:
+			anim.play("side_idle")
 			
 	if dir == "up":
 		if movement == 1:
@@ -114,10 +115,19 @@ func attack():
 	if Input.is_action_pressed("attack"):
 		global.player_current_attack = true
 		attack_ip = true
-		
-		
-
-
+		if dir == "right":
+			$melee_weapons/sword_side.visible = true
+			$deal_attack_timer.start()
+		if dir == "left":
+			$melee_weapons/sword_left.visible = true
+			$deal_attack_timer.start()
+		if dir == "up":
+			$melee_weapons/sword_up.visible = true
+			$deal_attack_timer.start()
+		if dir == "down":
+			$melee_weapons/sword_down.visible = true
+			$deal_attack_timer.start()
+			
 
 
 func _on_player_hurtbox_body_entered(body):
@@ -129,3 +139,13 @@ func _on_player_hurt4box_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_in_range = false
 		
+
+
+func _on_deal_attack_timer_timeout():
+	$deal_attack_timer.stop()
+	$melee_weapons/sword_up.visible = false
+	$melee_weapons/sword_side.visible = false
+	$melee_weapons/sword_down.visible = false
+	$melee_weapons/sword_left.visible = false
+	global.player_current_attack = false
+	attack_ip = false

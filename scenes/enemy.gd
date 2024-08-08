@@ -5,6 +5,7 @@ var player_chase = false
 var player = null
 var health = 100
 var player_in_range = false
+var can_take_damage = true
 
 
 
@@ -41,8 +42,16 @@ func _on_enemy_hitbox_body_exited(body):
 		
 func deal_with_damage():
 	if player_in_range and global.player_current_attack == true:
-		health = health - 20
-		print("slimehealth =", health)
-		if health <= 0:
-			self.queue_free()
+		if can_take_damage == true:
+			health = health - 20
+			$take_damage_cooldown.start()
+			can_take_damage = false
+			print("slimehealth =", health)
+			if health <= 0:
+				self.queue_free()
 
+
+
+func _on_take_damage_cooldown_timeout():
+	can_take_damage = true
+	
