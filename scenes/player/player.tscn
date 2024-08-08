@@ -1,7 +1,125 @@
-[gd_scene load_steps=5 format=3 uid="uid://bilijqk4xkux4"]
+[gd_scene load_steps=32 format=3 uid="uid://bilijqk4xkux4"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_brhwy"]
-[ext_resource type="Texture2D" uid="uid://cmr1yfws58ofn" path="res://icon.svg" id="2_raxmv"]
+[ext_resource type="Texture2D" uid="uid://deovbvmod6kea" path="res://assets/Character/GQ_MC.png" id="2_5jf2e"]
+[ext_resource type="Texture2D" uid="uid://bn8s541u8ygu7" path="res://assets/GQ_SwordAnim.png" id="3_ecgo6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as07r"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lj3a"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6jgc"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhhsq"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tpjt"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272gv"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yhhd"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eluxg"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xc8r"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dmbk"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulpev"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh83t"]
+atlas = ExtResource("2_5jf2e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vrdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as07r")
+}],
+"loop": true,
+"name": &"down_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lj3a")
+}],
+"loop": true,
+"name": &"side_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6jgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhhsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tpjt")
+}],
+"loop": true,
+"name": &"side_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272gv")
+}],
+"loop": true,
+"name": &"up_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yhhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eluxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xc8r")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dmbk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulpev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh83t")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtylo"]
 size = Vector2(6, 6)
@@ -9,14 +127,266 @@ size = Vector2(6, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tflk"]
 radius = 6.0
 
+[sub_resource type="Animation" id="Animation_m1hyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("melee_weapons/sword_side:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("melee_weapons/sword_side:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0142999]
+}
+
+[sub_resource type="Animation" id="Animation_aelxx"]
+resource_name = "sword_swing"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("melee_weapons/sword_side:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(5, -2), Vector2(7, 2), Vector2(4, 6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("melee_weapons/sword_side:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.18941, 0.0419603, 1.23307]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sq6yn"]
+_data = {
+"RESET": SubResource("Animation_m1hyp"),
+"sword_swing": SubResource("Animation_aelxx")
+}
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_ae62l"]
+
+[sub_resource type="Animation" id="Animation_xd3vl"]
+resource_name = "sword_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, -7), Vector2(-2, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.23737, -1.40447]
+}
+
+[sub_resource type="Animation" id="Animation_pk0ns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, -7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.23737]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c163x"]
+_data = {
+"RESET": SubResource("Animation_pk0ns"),
+"sword_up": SubResource("Animation_xd3vl")
+}
+
+[sub_resource type="Animation" id="Animation_2284k"]
+resource_name = "sword_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-2, 4), Vector2(1, 5), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.69083, -3.15865, -4.62646]
+}
+
+[sub_resource type="Animation" id="Animation_se0c2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.69083]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26fte"]
+_data = {
+"RESET": SubResource("Animation_se0c2"),
+"sword_down": SubResource("Animation_2284k")
+}
+
+[sub_resource type="Animation" id="Animation_v6r3r"]
+resource_name = "sword left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 1), Vector2(-5, 4), Vector2(-2, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.266579, -1.53831, -2.81005]
+}
+
+[sub_resource type="Animation" id="Animation_w7bu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.266579]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nsk8x"]
+_data = {
+"RESET": SubResource("Animation_w7bu8"),
+"sword left": SubResource("Animation_v6r3r")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_brhwy")
+metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.052)
-texture = ExtResource("2_raxmv")
+[node name="character_sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_0vrdj")
+animation = &"side_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
@@ -32,6 +402,75 @@ shape = SubResource("CircleShape2D_2tflk")
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
+[node name="melee_weapons" type="Node2D" parent="."]
+texture_filter = 1
+
+[node name="sword_side" type="Sprite2D" parent="melee_weapons"]
+position = Vector2(7, 3)
+rotation = 0.0142999
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ecgo6")
+region_enabled = true
+region_rect = Rect2(8, 16, 24, 8)
+
+[node name="swordanimation" type="AnimationPlayer" parent="melee_weapons/sword_side"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_sq6yn")
+}
+autoplay = "sword_swing"
+
+[node name="AnimationTree" type="AnimationTree" parent="melee_weapons/sword_side"]
+tree_root = SubResource("AnimationRootNode_ae62l")
+advance_expression_base_node = NodePath("../swordanimation")
+
+[node name="sword_up" type="Sprite2D" parent="melee_weapons"]
+texture_filter = 1
+position = Vector2(2, -7)
+rotation = 1.23737
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ecgo6")
+region_enabled = true
+region_rect = Rect2(72, 8, 8, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="melee_weapons/sword_up"]
+libraries = {
+"": SubResource("AnimationLibrary_c163x")
+}
+autoplay = "sword_up"
+
+[node name="sword_down" type="Sprite2D" parent="melee_weapons"]
+position = Vector2(-2, 4)
+rotation = -1.69083
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ecgo6")
+region_enabled = true
+region_rect = Rect2(72, 8, 8, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="melee_weapons/sword_down"]
+libraries = {
+"": SubResource("AnimationLibrary_26fte")
+}
+autoplay = "sword_down"
+
+[node name="sword_left" type="Sprite2D" parent="melee_weapons"]
+position = Vector2(-5, 1)
+rotation = -0.266579
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_ecgo6")
+region_enabled = true
+region_rect = Rect2(72, 8, 8, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="melee_weapons/sword_left"]
+libraries = {
+"": SubResource("AnimationLibrary_nsk8x")
+}
+autoplay = "sword left"
+
+[node name="deal_attack_timer" type="Timer" parent="."]
+wait_time = 0.4
+
 [connection signal="body_entered" from="PlayerHurtbox" to="." method="_on_player_hurtbox_body_entered"]
 [connection signal="body_exited" from="PlayerHurtbox" to="." method="_on_player_hurt4box_body_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
