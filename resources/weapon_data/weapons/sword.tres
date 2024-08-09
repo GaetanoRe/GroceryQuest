@@ -1,11 +1,56 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cffwjgkd5vpm"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=9 format=3 uid="uid://cffwjgkd5vpm"]
 
 [ext_resource type="Script" path="res://scripts/player/weapon_data.gd" id="1_muvjt"]
 [ext_resource type="Texture2D" uid="uid://bn8s541u8ygu7" path="res://assets/GQ_SwordAnim.png" id="2_338pe"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1vcv"]
+size = Vector2(10, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66b0u"]
+atlas = ExtResource("2_338pe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31qu7"]
+atlas = ExtResource("2_338pe")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enfqt"]
+atlas = ExtResource("2_338pe")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3d5o"]
+atlas = ExtResource("2_338pe")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evfl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31qu7")
+}],
+"loop": true,
+"name": &"swing_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enfqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3d5o")
+}],
+"loop": true,
+"name": &"swing_right",
+"speed": 5.0
+}]
+
 [resource]
 script = ExtResource("1_muvjt")
 type = 0
-sprite = ExtResource("2_338pe")
-hitbox = Vector2(0, 0)
+sprite = SubResource("SpriteFrames_evfl8")
+hitbox_dimensions = SubResource("RectangleShape2D_m1vcv")
 animation_time = 0.0
+animation = []

@@ -20,10 +20,10 @@ signal hurt
 func _ready():
 	spawn_loc = Vector2.ZERO
 	# somehow, make it spawn...
-	$melee_weapons/sword_up.visible = false
-	$melee_weapons/sword_side.visible = false
-	$melee_weapons/sword_down.visible = false
-	$melee_weapons/sword_left.visible = false
+	#$melee_weapons/sword_up.visible = false
+	#$melee_weapons/sword_side.visible = false
+	#$melee_weapons/sword_down.visible = false
+	#$melee_weapons/sword_left.visible = false
 
 func _process(delta):
 	pass
@@ -112,22 +112,22 @@ func attack():
 	var dir = current_dir
 	
 	#started input for attack 8/6/24
-	if Input.is_action_pressed("attack"):
-		global.player_current_attack = true
-		attack_ip = true
-		if dir == "right":
-			$melee_weapons/sword_side.visible = true
-			$deal_attack_timer.start()
-		if dir == "left":
-			$melee_weapons/sword_left.visible = true
-			$deal_attack_timer.start()
-		if dir == "up":
-			$melee_weapons/sword_up.visible = true
-			$deal_attack_timer.start()
-		if dir == "down":
-			$melee_weapons/sword_down.visible = true
-			$deal_attack_timer.start()
-			
+	#if Input.is_action_pressed("attack"):
+		#global.player_current_attack = true
+		#attack_ip = true
+		#if dir == "right":
+			#$melee_weapons/sword_side.visible = true
+			#$deal_attack_timer.start()
+		#if dir == "left":
+			#$melee_weapons/sword_left.visible = true
+			#$deal_attack_timer.start()
+		#if dir == "up":
+			#$melee_weapons/sword_up.visible = true
+			#$deal_attack_timer.start()
+		#if dir == "down":
+			#$melee_weapons/sword_down.visible = true
+			#$deal_attack_timer.start()
+			#
 
 
 func _on_player_hurtbox_body_entered(body):
@@ -143,9 +143,9 @@ func _on_player_hurt4box_body_exited(body):
 
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
-	$melee_weapons/sword_up.visible = false
-	$melee_weapons/sword_side.visible = false
-	$melee_weapons/sword_down.visible = false
-	$melee_weapons/sword_left.visible = false
-	global.player_current_attack = false
-	attack_ip = false
+	#$melee_weapons/sword_up.visible = false
+	#$melee_weapons/sword_side.visible = false
+	#$melee_weapons/sword_down.visible = false
+	#$melee_weapons/sword_left.visible = false
+	#global.player_current_attack = false
+	#attack_ip = false
