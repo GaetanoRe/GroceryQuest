@@ -8,17 +8,18 @@ class_name Weapon
 var weapon_type : int
 var animation_time : float
 @export var sprite : AnimatedSprite2D
-var sprite_animations : SpriteFrames = weapon_data.sprite
-@export var animations : Array = sprite_animations.animations
+var sprite_animations : SpriteFrames
 var hitbox : Area2D
 var hitbox_col : CollisionShape2D
+var attack_timer : Timer
+
 
 func _ready():
 	if(weapon_data):
+		attack_timer = get_parent().get_node("deal_attack_timer")
 		weapon_type = weapon_data.type
 		animation_time = weapon_data.animation_time
 		sprite_animations = weapon_data.sprite
-		animations = sprite_animations.animations
 		sprite = AnimatedSprite2D.new()
 		sprite.sprite_frames = sprite_animations
 		hitbox = Area2D.new()
@@ -28,11 +29,17 @@ func _ready():
 		hitbox.add_to_group("weapons")
 		add_child(sprite)
 		add_child(hitbox)
+		hitbox.add_to_group("player_weapons")
 		sprite.hide()
 
 func _process(delta):
 	if(Input.is_action_just_pressed("attack")):
 		sprite.show()
+		if(weapon_data.type == 0):
+			sprite.play("swing_left")
+		attack_timer.start()
+		await attack_timer.timeout
+		sprite.hide()
 
 # This will be used later for other weapons
 func update_weapon():

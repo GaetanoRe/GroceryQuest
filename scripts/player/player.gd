@@ -5,6 +5,7 @@ class_name Player
 const SPEED : float = 27.0
 
 #Combat variables
+@onready var weapon = $Weapon
 var enemy_in_range = false
 var enemy_attack_cooldown = true
 var health = 100
@@ -64,9 +65,12 @@ func _physics_process(delta):
 func player_animation(movement):
 	var dir = current_dir
 	var anim = $character_sprite
+	var weapon_pos :  Vector2
 	
 	#Animation for left and right 
 	if dir == "right":
+		weapon_pos = Vector2(3, 0)
+		weapon.global_rotation = 0
 		anim.flip_h = false
 		if movement == 1:
 			anim.play("side_walk")
@@ -74,6 +78,8 @@ func player_animation(movement):
 			anim.play("side_idle")
 			
 	if dir == "left":
+		weapon_pos = Vector2(-3,0)
+		weapon.global_rotation = 180
 		anim.flip_h = true
 		if movement == 1:
 			anim.play("side_walk")
@@ -81,17 +87,21 @@ func player_animation(movement):
 			anim.play("side_idle")
 			
 	if dir == "up":
+		weapon_pos = Vector2(0, -3)
+		weapon.global_rotation = -90
 		if movement == 1:
 			anim.play("walk_up")
 		elif movement == 0:
 			anim.play("up_idle")
 			
 	if dir == "down":
+		weapon_pos = Vector2(0, 3)
+		weapon.global_rotation = 90
 		if movement == 1:
 			anim.play("walk_down")
 		elif movement == 0:
 			anim.play("down_idle")
-	
+	weapon.global_position = Vector2(anim.global_position.x + weapon_pos.x, anim.global_position.y + weapon_pos.y)
 	
 
 func player():
