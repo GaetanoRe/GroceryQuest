@@ -55,3 +55,8 @@ func deal_with_damage():
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
 	
+
+
+func _on_enemy_hitbox_area_entered(area):
+	if(area.is_in_group("player_weapons")):
+		deal_with_damage()

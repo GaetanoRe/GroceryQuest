@@ -26,19 +26,23 @@ func _ready():
 		hitbox_col = CollisionShape2D.new()
 		hitbox_col.shape = weapon_data.hitbox_dimensions
 		hitbox.add_child(hitbox_col)
-		hitbox.add_to_group("weapons")
 		add_child(sprite)
 		add_child(hitbox)
 		hitbox.add_to_group("player_weapons")
+		hitbox.set_deferred("Disabled",true)
 		sprite.hide()
 
 func _process(delta):
 	if(Input.is_action_just_pressed("attack")):
 		sprite.show()
+		global.player_current_attack = true
 		if(weapon_data.type == 0):
 			sprite.play("swing_left")
 		attack_timer.start()
+		hitbox.set_deferred("Disabled", false)
 		await attack_timer.timeout
+		hitbox.set_deferred("Disabled",true)
+		global.player_current_attack = false
 		sprite.hide()
 
 # This will be used later for other weapons
