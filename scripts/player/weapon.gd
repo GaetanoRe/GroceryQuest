@@ -29,14 +29,12 @@ func _process(delta):
 	if(weapon_data):
 		if(Input.is_action_just_pressed("attack")):
 			sprite.show()
-			global.player_current_attack = true
 			if(weapon_data.type == 0):
 				sprite.play("swing_left")
 			attack_timer.start()
-			hitbox.set_deferred("Disabled", false)
+			hitbox_col.disabled = false
 			await attack_timer.timeout
-			hitbox.set_deferred("Disabled",true)
-			global.player_current_attack = false
+			hitbox_col.disabled = true
 			sprite.hide()
 
 # Function will be called when game starts with weapon and will be called when player gets new weapon
@@ -54,7 +52,7 @@ func update_weapon():
 	add_child(sprite)
 	add_child(hitbox)
 	hitbox.add_to_group("player_weapons")
-	hitbox.set_deferred("Disabled",true)
+	hitbox_col.disabled = true
 	sprite.hide()
 
 

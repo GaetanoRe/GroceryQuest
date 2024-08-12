@@ -1,13 +1,12 @@
-extends CharacterBody2D
+extends Body
 
-var speed = 100
 var player_chase = false
 var player = null
-var health = 100
 var player_in_range = false
 var can_take_damage = true
 
-
+func _ready():
+	knockback_strength = 200
 
 func _physics_process(delta):
 	if player_chase:

@@ -15,7 +15,7 @@ radius = 6.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xe6si"]
 size = Vector2(4, 4)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_uxv53")
 metadata/_edit_group_ = true
 
