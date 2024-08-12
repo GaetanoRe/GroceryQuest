@@ -10,8 +10,6 @@ var can_take_damage = true
 
 
 func _physics_process(delta):
-	deal_with_damage()
-	
 	if player_chase:
 		position += (player.position - position)/speed
 
@@ -32,23 +30,21 @@ func enemy():
 
 
 func _on_enemy_hitbox_body_entered(body):
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		player_in_range = true
 
 
 func _on_enemy_hitbox_body_exited(body):
-	if body.has_method("player"):
+	if body.is_in_group("player"):
 		player_in_range = false
 		
-func deal_with_damage():
-	if player_in_range and global.player_current_attack == true:
-		if can_take_damage == true:
-			health = health - 20
-			$take_damage_cooldown.start()
-			can_take_damage = false
-			print("slimehealth =", health)
-			if health <= 0:
-				self.queue_free()
+func deal_with_damage(dam : int) -> void:
+	health = health - dam
+	$take_damage_cooldown.start()
+	can_take_damage = false
+	print("slimehealth =", health)
+	if health <= 0:
+		self.queue_free()
 
 
 
@@ -57,6 +53,9 @@ func _on_take_damage_cooldown_timeout():
 	
 
 
-func _on_enemy_hitbox_area_entered(area):
+
+func _on_enemy_hurt_box_area_entered(area):
 	if(area.is_in_group("player_weapons")):
-		deal_with_damage()
+		var weapon = area.get_parent()
+		var weapon_dam = weapon.damage
+		deal_with_damage(weapon_dam)

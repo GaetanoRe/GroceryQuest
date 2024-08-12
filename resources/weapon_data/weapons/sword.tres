@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bn8s541u8ygu7" path="res://assets/GQ_SwordAnim.png" id="2_338pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1vcv"]
-size = Vector2(10, 6)
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66b0u"]
 atlas = ExtResource("2_338pe")
@@ -53,3 +53,4 @@ type = 0
 sprite = SubResource("SpriteFrames_evfl8")
 hitbox_dimensions = SubResource("RectangleShape2D_m1vcv")
 animation_time = 0.0
+damage = 20.0

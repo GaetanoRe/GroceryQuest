@@ -21,11 +21,6 @@ signal hurt
 
 func _ready():
 	spawn_loc = Vector2.ZERO
-	# somehow, make it spawn...
-	#$melee_weapons/sword_up.visible = false
-	#$melee_weapons/sword_side.visible = false
-	#$melee_weapons/sword_down.visible = false
-	#$melee_weapons/sword_left.visible = false
 
 func _process(delta):
 	pass
@@ -52,8 +47,8 @@ func _physics_process(delta):
 	else:
 		animation_player.play("idle_" + current_dir)
 		
-	attack()
-	enemy_attack()
+	#attack()
+	enemy_attack(10)
 	move_and_slide()
 	
 	if health <= 0:
@@ -105,12 +100,9 @@ func _physics_process(delta):
 	#weapon.global_position = Vector2(anim.global_position.x + weapon_pos.x, anim.global_position.y + weapon_pos.y)
 	#
 
-func player():
-	pass
-
-func enemy_attack():
+func enemy_attack(dam : int):
 	if enemy_in_range and enemy_attack_cooldown == true:
-		health = health - 10
+		health = health - dam
 		enemy_attack_cooldown = false
 		$AttackCooldown.start()
 		print(health)
@@ -119,8 +111,8 @@ func enemy_attack():
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 	
-func attack():
-	var dir = current_dir
+#func attack():
+	#var dir = current_dir
 	
 	#started input for attack 8/6/24
 	#if Input.is_action_pressed("attack"):
