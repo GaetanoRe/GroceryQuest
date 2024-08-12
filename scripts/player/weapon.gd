@@ -15,6 +15,7 @@ var attack_timer : Timer
 var weapon_type : int
 var animation_time : float
 var damage : float 
+var knockback : float
 var sprite_animations : SpriteFrames
 
 
@@ -22,6 +23,7 @@ var sprite_animations : SpriteFrames
 func _ready():
 	if(weapon_data):
 		attack_timer = get_parent().get_node("deal_attack_timer")
+		knockback = 200
 		update_weapon()
 
 

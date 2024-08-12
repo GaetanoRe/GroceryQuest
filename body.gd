@@ -15,14 +15,6 @@ var knockback_resistence : float
 func deal_with_damage(dam : int, knock : int):
 	health -= dam
 	# Apply knockback
-	match current_dir:
-		"up":
-			knockback_velocity = Vector2(0, 1) * 100
-		"down":
-			knockback_velocity = Vector2(0, -1) * 100
-		"left":
-			knockback_velocity = Vector2(1, 0) * 100
-		"right":
-			knockback_velocity = Vector2(-1, 0) * 100
+	
 	
 	knockback_timer = knockback_time

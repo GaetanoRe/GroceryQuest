@@ -9,3 +9,4 @@ enum weapon_type{Swing, Thrust, Ranged}
 @export var hitbox_dimensions : RectangleShape2D
 @export var animation_time : float
 @export var damage : float
+@export var knockback : float

@@ -63,6 +63,15 @@ func _physics_process(delta):
 
 func deal_with_damage(dam : int, knock : int):
 	super(dam, knock)
+	match current_dir:
+		"up":
+			knockback_velocity = Vector2(0, 1) * 100
+		"down":
+			knockback_velocity = Vector2(0, -1) * 100
+		"left":
+			knockback_velocity = Vector2(1, 0) * 100
+		"right":
+			knockback_velocity = Vector2(-1, 0) * 100
 	$AttackCooldown.start()
 	print(health)
 

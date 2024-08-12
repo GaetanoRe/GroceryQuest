@@ -37,8 +37,18 @@ func _on_enemy_hitbox_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false
 		
-func deal_with_damage(dam : int) -> void:
+func deal_with_damage(dam : int, knock : int) -> void:
+	super(dam, knock)
 	health = health - dam
+	match current_dir:
+		"up":
+			knockback_velocity = Vector2(0, -1) * 100
+		"down":
+			knockback_velocity = Vector2(0, 1) * 100
+		"left":
+			knockback_velocity = Vector2(-1, 0) * 100
+		"right":
+			knockback_velocity = Vector2(1, 0) * 100
 	$take_damage_cooldown.start()
 	can_take_damage = false
 	print("slimehealth =", health)
@@ -57,4 +67,4 @@ func _on_enemy_hurt_box_area_entered(area):
 	if(area.is_in_group("player_weapons")):
 		var weapon = area.get_parent()
 		var weapon_dam = weapon.damage
-		deal_with_damage(weapon_dam)
+		deal_with_damage(weapon_dam, weapon.knockback)
