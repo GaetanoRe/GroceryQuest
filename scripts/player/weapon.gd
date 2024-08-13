@@ -23,7 +23,7 @@ var sprite_animations : SpriteFrames
 func _ready():
 	if(weapon_data):
 		attack_timer = get_parent().get_node("deal_attack_timer")
-		knockback = 200
+		knockback = weapon_data.knockback
 		update_weapon()
 
 

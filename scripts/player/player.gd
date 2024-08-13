@@ -5,7 +5,7 @@ class_name Player
 #Combat variables
 @onready var weapon = $Weapon
 @onready var animation_player = $AnimationPlayer
-
+@onready var coin = 0
 
 var enemy_in_range = false
 var enemy_attack_cooldown = true

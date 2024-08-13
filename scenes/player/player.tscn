@@ -661,6 +661,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(32, 32)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_brhwy")
@@ -690,7 +691,6 @@ shape = SubResource("CircleShape2D_2tflk")
 wait_time = 0.4
 
 [node name="Weapon" type="Node2D" parent="."]
-position = Vector2(0, 3)
 rotation = 1.5708
 script = ExtResource("3_rcbbf")
 weapon_data = ExtResource("4_noq1a")

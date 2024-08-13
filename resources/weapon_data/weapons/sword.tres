@@ -54,3 +54,4 @@ sprite = SubResource("SpriteFrames_evfl8")
 hitbox_dimensions = SubResource("RectangleShape2D_m1vcv")
 animation_time = 0.0
 damage = 20.0
+knockback = 300.0
