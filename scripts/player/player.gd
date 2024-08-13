@@ -19,6 +19,7 @@ signal hurt
 func _ready():
 	knockback_resistence = 100
 	knockback_strength = 200
+	knockback_velocity = Vector2.ZERO
 	spawn_loc = Vector2.ZERO
 
 func _process(delta):

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3e4bqviojr4g" path="res://assets/ui/healthProgTop.png" id="2_pecw0"]
 [ext_resource type="Texture2D" uid="uid://corr3j5x5ldib" path="res://assets/ui/healthProgProgress.png" id="3_8xd45"]
 [ext_resource type="Script" path="res://scenes/UI/player_health.gd" id="4_643q5"]
-[ext_resource type="Texture2D" uid="uid://dj45r1kj41pn" path="res://assets/ui/inventory_bar.png" id="5_ohjpv"]
+[ext_resource type="Texture2D" uid="uid://c3kday3nnkrki" path="res://assets/ui/inventory_bar.png" id="5_ohjpv"]
 [ext_resource type="FontFile" uid="uid://ev2cjbe05gj4" path="res://assets/font/PixelOperator8.ttf" id="6_su5n4"]
 [ext_resource type="Texture2D" uid="uid://jijisaaxdwdh" path="res://assets/sprites/coin.png" id="7_reqwv"]
 
