@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://wq2f26vs7flm"]
+[gd_scene load_steps=2 format=3 uid="uid://wq2f26vs7flm"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_lueyd"]
-[ext_resource type="PackedScene" uid="uid://c6t20y021nmvb" path="res://scenes/generation_scenes/a_1.tscn" id="2_nrn4s"]
 
 [node name="World" type="Node2D" groups=["world"]]
 script = ExtResource("1_lueyd")
-
-[node name="A1" parent="." groups=["room"] instance=ExtResource("2_nrn4s")]

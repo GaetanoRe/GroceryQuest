@@ -15,6 +15,8 @@ signal entered_south
 signal entered_east
 signal entered_west
 
+signal opened_door
+
 
 var item_taken : bool = false
 
@@ -22,7 +24,8 @@ var room_data : Resource
 
 func _ready():
 	type = 0
-	
+	opened_door.connect(load_new_room)
+	add_to_group("room")
 
 
 func save_room():
@@ -52,6 +55,7 @@ func load_room():
 		
 
 func load_new_room(dir : String):
+	save_room()
 	var dir_low = dir.to_lower()
 	if(dir_low == "north"):
 		entered_north.emit()

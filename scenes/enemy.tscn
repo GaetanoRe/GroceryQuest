@@ -24,6 +24,7 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_dvlhr")
 
 [node name="detection_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 

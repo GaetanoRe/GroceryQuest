@@ -20,7 +20,8 @@ func _ready():
 	knockback_resistence = 100
 	knockback_strength = 200
 	knockback_velocity = Vector2.ZERO
-	spawn_loc = Vector2.ZERO
+	spawn_loc = Vector2(10,10)
+	global_position = spawn_loc
 
 func _process(delta):
 	pass
@@ -28,7 +29,7 @@ func _process(delta):
 func _physics_process(delta):
 	var direction = Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
 
-	# Apply normal movement if not in knockback
+	 #Apply normal movement if not in knockback
 	if knockback_timer <= 0:
 		velocity.x = direction.x * speed
 		velocity.y = direction.y * speed
@@ -51,9 +52,11 @@ func _physics_process(delta):
 		animation_player.play("walk_left")
 	else:
 		animation_player.play("idle_" + current_dir)
-	
 	# Move the player
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		print(collision.get_collider().get_path())
 
 	if health <= 0:
 		player_alive = false # Add death screen and respawn here
