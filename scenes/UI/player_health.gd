@@ -2,12 +2,13 @@ extends TextureProgressBar
 
 class_name PlayerHealth
 
-var player : Player
+@onready var main_scene = get_parent().get_parent().get_parent()
+var player_health : int
 
 func _ready():
-	player = get_tree().get_first_node_in_group("player")
-	
+	pass
 
 func _process(delta):
-	value = player.health
+	player_health = main_scene.player.health
+	value = player_health
 

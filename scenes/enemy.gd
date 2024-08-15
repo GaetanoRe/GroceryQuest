@@ -31,8 +31,9 @@ func enemy():
 func _on_enemy_hitbox_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_range = true
-
-
+		player_chase = false
+		await get_tree().create_timer(0.5).timeout
+		player_chase = true
 func _on_enemy_hitbox_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false

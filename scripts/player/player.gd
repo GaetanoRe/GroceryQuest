@@ -6,6 +6,7 @@ class_name Player
 @onready var weapon = $Weapon
 @onready var animation_player = $AnimationPlayer
 @onready var coin = 0
+@onready var key = 1
 
 var enemy_in_range = false
 var enemy_attack_cooldown = true
@@ -15,13 +16,19 @@ var spawn_loc : Vector2
 
 
 signal hurt
+signal dead
+signal opened_door
 
 func _ready():
+	add_to_group("player")
+	health = 100
 	knockback_resistence = 100
 	knockback_strength = 200
 	knockback_velocity = Vector2.ZERO
-	spawn_loc = Vector2(10,10)
+	spawn_loc = Vector2(10,20)
 	global_position = spawn_loc
+	opened_door.connect(change_loc)
+	
 
 func _process(delta):
 	pass
@@ -54,16 +61,12 @@ func _physics_process(delta):
 		animation_player.play("idle_" + current_dir)
 	# Move the player
 	move_and_slide()
-	for i in get_slide_collision_count():
-		var collision := get_slide_collision(i)
-		print(collision.get_collider().get_path())
 
 	if health <= 0:
 		player_alive = false # Add death screen and respawn here
 		health = 0
 		print("player has been killed")
-		var main_scene = load("res://scenes/main_scene.tscn")
-		get_tree().change_scene_to_packed(main_scene)
+		#dd
 
 func deal_with_damage(dam : int, knock : int):
 	super(dam, knock)
@@ -97,3 +100,6 @@ func _on_player_hurt4box_body_exited(body):
 
 func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
+
+func change_loc(pos : Vector2):
+	global_position = pos

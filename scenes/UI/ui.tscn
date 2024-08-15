@@ -7,8 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://c3kday3nnkrki" path="res://assets/ui/inventory_bar.png" id="5_ohjpv"]
 [ext_resource type="FontFile" uid="uid://ev2cjbe05gj4" path="res://assets/font/PixelOperator8.ttf" id="6_su5n4"]
 [ext_resource type="Texture2D" uid="uid://jijisaaxdwdh" path="res://assets/sprites/coin.png" id="7_reqwv"]
+[ext_resource type="Texture2D" uid="uid://dhavi8k6esi7e" path="res://assets/sprites/key.png" id="8_bbss4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fmhnu"]
+font = ExtResource("6_su5n4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6brr"]
 font = ExtResource("6_su5n4")
 font_size = 8
 
@@ -253,7 +258,6 @@ horizontal_alignment = 2
 layout_mode = 2
 texture = ExtResource("7_reqwv")
 
-[node name="Transition_blackscreen" type="ColorRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -280,6 +284,25 @@ text = "GAME
 OVER"
 label_settings = SubResource("LabelSettings_km6gu")
 horizontal_alignment = 1
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 63.0
+offset_bottom = 10.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_h6brr")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_bbss4")
+
+[node name="Transition_blackscreen" type="ColorRect" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

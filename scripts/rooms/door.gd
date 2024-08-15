@@ -2,17 +2,29 @@ extends Node2D
 
 class_name Door
 
-@onready var room_scene = get_parent()
+@export var next_room : PackedScene
 
+@export var locked_door : bool
+
+@export var next_room_loc : Vector2
+
+@onready var sprite = $DoorSprite
+
+@onready var lock = $LockSprite
+
+
+func _ready():
+	if(locked_door):
+		lock.show()
+	else:
+		lock.hide()
 
 
 func _on_area_2d_body_entered(body):
-	if(body is Player):
-		if(global_position.y < 0 and global_position.x == 0):
-			room_scene.entered_room.emit("north")
-		elif(global_position.y >= 0 and global_position.x == 0):
-			room_scene.entered_south.emit("south")
-		elif(global_position.x < 0 and global_position.y == 0):
-			room_scene.entered_west.emit("east")
-		elif(global_position.x >= 0 and global_position.y == 0):
-			room_scene.entered_east.emit("west")
+	if(body is Player and !locked_door):
+		sprite.play("open")
+		body.opened_door.emit(next_room_loc)
+		await get_tree().create_timer(0.1)
+		get_parent().get_tree().change_scene_to_packed(next_room)
+	elif(body is Player and body.key > 0 and locked_door):
+		locked_door = false
