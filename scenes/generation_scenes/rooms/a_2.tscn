@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj5xv8wlv7ugb"]
+[gd_scene load_steps=9 format=3 uid="uid://cesefo1lhfgi6"]
 
-[ext_resource type="Script" path="res://scripts/rooms/room.gd" id="1_ixlh7"]
-[ext_resource type="Texture2D" uid="uid://cvmoesghasrdj" path="res://assets/tilemaps/QG_Wall1.png" id="3_o5ogy"]
-[ext_resource type="Texture2D" uid="uid://dk1qky2sfa5r7" path="res://assets/tilemaps/QG_Tile1.png" id="4_pxpxu"]
+[ext_resource type="Script" path="res://scripts/rooms/room.gd" id="1_yoqfv"]
+[ext_resource type="Texture2D" uid="uid://cvmoesghasrdj" path="res://assets/tilemaps/QG_Wall1.png" id="2_sguh7"]
+[ext_resource type="Texture2D" uid="uid://dk1qky2sfa5r7" path="res://assets/tilemaps/QG_Tile1.png" id="3_4qp7m"]
+[ext_resource type="PackedScene" path="res://scenes/generation_scenes/door.tscn" id="4_e1ein"]
+[ext_resource type="PackedScene" uid="uid://dvp6hxjvy6p6x" path="res://scenes/generation_scenes/rooms/a_1.tscn" id="5_h5hsq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ppw2g"]
-texture = ExtResource("3_o5ogy")
+texture = ExtResource("2_sguh7")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -56,7 +58,7 @@ texture = ExtResource("3_o5ogy")
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.125, -8, 2.875, 2.875, -8, 2.875, -8, 8, 8, 8, 8, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vmrlk"]
-texture = ExtResource("4_pxpxu")
+texture = ExtResource("3_4qp7m")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -112,10 +114,11 @@ sources/0 = SubResource("TileSetAtlasSource_ppw2g")
 sources/1 = SubResource("TileSetAtlasSource_vmrlk")
 
 [node name="A2" type="Node2D"]
-script = ExtResource("1_ixlh7")
+script = ExtResource("1_yoqfv")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
+position = Vector2(64, 0)
 tile_set = SubResource("TileSet_jjs6o")
 format = 2
 layer_0/name = "walls"
@@ -123,3 +126,9 @@ layer_0/tile_data = PackedInt32Array(65532, 0, 0, 9, 196608, 0, 458761, 196608, 
 layer_1/name = "floor"
 layer_1/z_index = -1
 layer_1/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 131076, 1, 0, 65540, 1, 0, 65539, 1, 0, 65538, 1, 0, 65537, 1, 0, 65536, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 196611, 1, 0, 196610, 1, 0, 196609, 1, 0, 196608, 1, 0, 196612, 1, 0, 196613, 1, 0, 65535, 1, 0, 131071, 1, 0, 196607, 1, 0, 262143, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 131079, 1, 0, 65543, 1, 0, 7, 1, 0, 65534, 1, 0, 131070, 1, 0, 196606, 1, 0, 65533, 1, 0, 131069, 1, 0, 196605, 1, 0, 65532, 1, 0, 131068, 1, 0, 196604, 1, 0, 393215, 1, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 393221, 1, 0, 393220, 1, 0, 393219, 1, 0, 393218, 1, 0, 393217, 1, 0, 393216, 1, 0, 458751, 1, 0, 524287, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, 262142, 1, 0, 327678, 1, 0, 393214, 1, 0, 458750, 1, 0, 524286, 1, 0, 262141, 1, 0, 327677, 1, 0, 393213, 1, 0, 458749, 1, 0, 524285, 1, 0, 262140, 1, 0, 327676, 1, 0, 393212, 1, 0, 458748, 1, 0, 524284, 1, 0, 196614, 1, 0, 262150, 1, 0, 327686, 1, 0, 393222, 1, 0, 458758, 1, 0, 196615, 1, 0, 262151, 1, 0, 327687, 1, 0, 393223, 1, 0, 458759, 1, 0, 196616, 1, 0, 262152, 1, 0, 327688, 1, 0, 393224, 1, 0, 458760, 1, 0, 196617, 1, 0, 262153, 1, 0, 327689, 1, 0, 393225, 1, 0, 458761, 1, 0)
+
+[node name="Door" parent="." instance=ExtResource("4_e1ein")]
+position = Vector2(6, 58)
+rotation = -1.57372
+next_room = ExtResource("5_h5hsq")
+next_room_loc = Vector2(160, 68)

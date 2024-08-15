@@ -25,6 +25,6 @@ func _on_area_2d_body_entered(body):
 		sprite.play("open")
 		body.opened_door.emit(next_room_loc)
 		await get_tree().create_timer(0.1)
-		get_parent().get_tree().change_scene_to_packed(next_room)
+		get_tree().change_scene_to_packed(next_room)
 	elif(body is Player and body.key > 0 and locked_door):
 		locked_door = false

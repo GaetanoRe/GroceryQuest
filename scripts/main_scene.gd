@@ -11,6 +11,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	animation_player = $UI/AnimationPlayer
 	world.player_dead.connect(game_over)
+	world.room_changed.connect(room_transition)
 	
 
 func _process(delta) -> void:
@@ -24,10 +25,10 @@ func _process(delta) -> void:
 
 ##  Play game over animation and wait for it to finish before changing scenes
 func game_over() -> void:
-  $UI.AnimationPlayer.play("FadeOut")
+	animation_player.play("FadeOut")
 	animation_player.play("GameOver")
 	await get_tree().create_timer(2.5).timeout
-  $UI.AnimationPlayer.play("FadeIn")
+	$UI.AnimationPlayer.play("FadeIn")
 	get_tree().reload_current_scene()
 
 func load_world():
@@ -37,3 +38,8 @@ func load_world():
 
 func reload_world():
 	pass
+
+func room_transition():
+	animation_player.play("FadeOut")
+	await get_tree().create_timer(1.0)
+	animation_player.play("FadeIn")
