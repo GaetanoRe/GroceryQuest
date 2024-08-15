@@ -13,14 +13,21 @@ func _process(delta) -> void:
 	if(Input.is_action_just_pressed("quit")) :
 		get_tree().quit()
 	
-	   # If the player dies, call game_over function
+	##  If the player dies, call game_over function
 	#if !player.player_alive:
 		#game_over()
-#
-   ## Play game over animation and wait for it to finish before changing scenes
+
+##  Play game over animation and wait for it to finish before changing scenes
 #func game_over() -> void:
 	#$UI.AnimationPlayer.play("GameOver")
 	#await get_tree().create_timer(2.5).timeout
 	#var world_scene = load("res://scenes/generation_scenes/world.tscn")
 	#world_scene.instantiate()
 	#add_child(world)
+
+## Fade Out (screen fades to black)
+#$UI.AnimationPlayer.play("FadeOut")
+#await get_tree().create_timer(0.5).timeout
+## load next scene here
+## Immediately Fade In (black screen fades to reveal map)
+#$UI.AnimationPlayer.play("FadeIn")
