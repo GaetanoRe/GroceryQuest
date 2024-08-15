@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dbdj3lxxu5qb1"]
+[gd_scene load_steps=15 format=3 uid="uid://dbdj3lxxu5qb1"]
 
 [ext_resource type="Texture2D" uid="uid://bp8fpwgh7cwx3" path="res://assets/ui/healthProgBottom.png" id="1_3el8q"]
 [ext_resource type="Texture2D" uid="uid://c3e4bqviojr4g" path="res://assets/ui/healthProgTop.png" id="2_pecw0"]
@@ -7,8 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://c3kday3nnkrki" path="res://assets/ui/inventory_bar.png" id="5_ohjpv"]
 [ext_resource type="FontFile" uid="uid://ev2cjbe05gj4" path="res://assets/font/PixelOperator8.ttf" id="6_su5n4"]
 [ext_resource type="Texture2D" uid="uid://jijisaaxdwdh" path="res://assets/sprites/coin.png" id="7_reqwv"]
+[ext_resource type="Texture2D" uid="uid://dhavi8k6esi7e" path="res://assets/sprites/key.png" id="8_bbss4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fmhnu"]
+font = ExtResource("6_su5n4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_h6brr"]
 font = ExtResource("6_su5n4")
 font_size = 8
 
@@ -194,6 +199,24 @@ horizontal_alignment = 2
 [node name="Coin" type="TextureRect" parent="Control/Money"]
 layout_mode = 2
 texture = ExtResource("7_reqwv")
+
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 63.0
+offset_bottom = 10.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_h6brr")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_bbss4")
 
 [node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false
