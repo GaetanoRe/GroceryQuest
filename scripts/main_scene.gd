@@ -17,12 +17,17 @@ func _process(delta) -> void:
 	if(Input.is_action_just_pressed("quit")) :
 		get_tree().quit()
 	
-	#If the player dies, call game_over function
-#
-   ## Play game over animation and wait for it to finish before changing scenes
+
+	##  If the player dies, call game_over function
+	if !player.player_alive:
+		game_over()
+
+##  Play game over animation and wait for it to finish before changing scenes
 func game_over() -> void:
+  $UI.AnimationPlayer.play("FadeOut")
 	animation_player.play("GameOver")
 	await get_tree().create_timer(2.5).timeout
+  $UI.AnimationPlayer.play("FadeIn")
 	get_tree().reload_current_scene()
 
 func load_world():

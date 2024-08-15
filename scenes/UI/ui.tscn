@@ -27,7 +27,7 @@ length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameOver_blackscreen:color")
+tracks/0/path = NodePath("Transition_blackscreen:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameOver_blackscreen:modulate")
+tracks/1/path = NodePath("Transition_blackscreen:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,7 +75,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameOver_blackscreen:visible")
+tracks/4/path = NodePath("Transition_blackscreen:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -90,7 +90,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameOver_blackscreen:color")
+tracks/0/path = NodePath("Transition_blackscreen:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -102,7 +102,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameOver_blackscreen:modulate")
+tracks/1/path = NodePath("Transition_blackscreen:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +138,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("GameOver_blackscreen:visible")
+tracks/4/path = NodePath("Transition_blackscreen:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -148,8 +148,66 @@ tracks/4/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_l63aw"]
+resource_name = "Fade_In"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition_blackscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition_blackscreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qkber"]
+resource_name = "Fade_Out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition_blackscreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition_blackscreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvajs"]
 _data = {
+"Fade_In": SubResource("Animation_l63aw"),
+"Fade_Out": SubResource("Animation_qkber"),
 "GameOver": SubResource("Animation_7bhdw"),
 "RESET": SubResource("Animation_j3k6p")
 }
@@ -200,25 +258,6 @@ horizontal_alignment = 2
 layout_mode = 2
 texture = ExtResource("7_reqwv")
 
-[node name="BoxContainer" type="BoxContainer" parent="Control"]
-layout_mode = 0
-offset_left = 40.0
-offset_right = 63.0
-offset_bottom = 10.0
-alignment = 2
-
-[node name="Label" type="Label" parent="Control/BoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "0"
-label_settings = SubResource("LabelSettings_h6brr")
-
-[node name="TextureRect" type="TextureRect" parent="Control/BoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("8_bbss4")
-
-[node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -245,6 +284,25 @@ text = "GAME
 OVER"
 label_settings = SubResource("LabelSettings_km6gu")
 horizontal_alignment = 1
+[node name="BoxContainer" type="BoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 63.0
+offset_bottom = 10.0
+alignment = 2
+
+[node name="Label" type="Label" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_h6brr")
+
+[node name="TextureRect" type="TextureRect" parent="Control/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_bbss4")
+
+[node name="Transition_blackscreen" type="ColorRect" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
