@@ -56,6 +56,3 @@ func update_weapon():
 	hitbox.add_to_group("player_weapons")
 	hitbox_col.disabled = true
 	sprite.hide()
-
-
-

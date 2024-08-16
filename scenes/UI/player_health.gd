@@ -11,4 +11,3 @@ func _ready():
 func _process(delta):
 	player_health = main_scene.player.health
 	value = player_health
-
