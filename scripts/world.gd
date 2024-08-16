@@ -9,6 +9,7 @@ var player : Player
 var player_health : float
 
 signal player_dead
+signal room_changed
 
 func _ready():
 	spawn_player()
