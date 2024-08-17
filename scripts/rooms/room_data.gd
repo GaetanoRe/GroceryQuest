@@ -9,12 +9,7 @@ enum room_type {Regular, Item , Switch ,Passage}
 @export var name : String
 @export var type : room_type
 @export var floor : int
-
-# References to rooms adjacent to this one
-@export var room_north : PackedScene
-@export var room_south : PackedScene
-@export var room_east : PackedScene
-@export var room_west : PackedScene
+@export var doors : Array
 
 # Room Specific data
 
@@ -27,7 +22,3 @@ enum room_type {Regular, Item , Switch ,Passage}
 
 #Passage
 @export var boss_defeated : bool
-
-
-
-

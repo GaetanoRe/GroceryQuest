@@ -102,4 +102,5 @@ func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
 
 func change_loc(pos : Vector2):
-	global_position = pos
+	position = pos
+	print(position)

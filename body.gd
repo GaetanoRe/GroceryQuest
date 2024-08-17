@@ -4,7 +4,7 @@ class_name Body
 
 var health = 100
 var speed : float = 27.0
-var current_dir = "none"
+var current_dir = "down"
 var knockback_velocity
 var knockback_time : float = 0.2
 var knockback_timer : float = 0.0

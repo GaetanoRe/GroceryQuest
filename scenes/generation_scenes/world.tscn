@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://wq2f26vs7flm"]
+[gd_scene load_steps=7 format=3 uid="uid://wq2f26vs7flm"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_lueyd"]
+[ext_resource type="PackedScene" uid="uid://c6t20y021nmvb" path="res://scenes/generation_scenes/rooms/a_1.tscn" id="2_e0j6l"]
+[ext_resource type="Script" path="res://scripts/rooms/room_resource.gd" id="3_ctepy"]
+[ext_resource type="PackedScene" uid="uid://dj5xv8wlv7ugb" path="res://scenes/generation_scenes/rooms/a_2.tscn" id="3_osdjr"]
+
+[sub_resource type="Resource" id="Resource_sxkgg"]
+script = ExtResource("3_ctepy")
+id = "a_1"
+scene = ExtResource("2_e0j6l")
+
+[sub_resource type="Resource" id="Resource_6ukwl"]
+script = ExtResource("3_ctepy")
+id = "a_2"
+scene = ExtResource("3_osdjr")
 
 [node name="World" type="Node2D" groups=["world"]]
 script = ExtResource("1_lueyd")
+init_room = ExtResource("2_e0j6l")
+rooms = Array[ExtResource("3_ctepy")]([SubResource("Resource_sxkgg"), SubResource("Resource_6ukwl")])

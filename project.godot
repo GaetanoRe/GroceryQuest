@@ -15,15 +15,10 @@ run/main_scene="res://scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-global="*res://scripts/global.gd"
-
 [display]
 
 window/size/viewport_width=64
 window/size/viewport_height=64
-window/size/mode=3
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
