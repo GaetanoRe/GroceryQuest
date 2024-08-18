@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbdj3lxxu5qb1"]
+[gd_scene load_steps=17 format=3 uid="uid://dbdj3lxxu5qb1"]
 
 [ext_resource type="Texture2D" uid="uid://bp8fpwgh7cwx3" path="res://assets/ui/healthProgBottom.png" id="1_3el8q"]
 [ext_resource type="Texture2D" uid="uid://c3e4bqviojr4g" path="res://assets/ui/healthProgTop.png" id="2_pecw0"]
@@ -14,6 +14,14 @@ font = ExtResource("6_su5n4")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_h6brr"]
+font = ExtResource("6_su5n4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ted7t"]
+font = ExtResource("6_su5n4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_4qgkb"]
 font = ExtResource("6_su5n4")
 font_size = 8
 
@@ -162,31 +170,27 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerHealth Prog" type="TextureProgressBar" parent="Control"]
-texture_filter = 1
+[node name="InventoryBarContainer" type="BoxContainer" parent="Control"]
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-texture_under = ExtResource("1_3el8q")
-texture_over = ExtResource("2_pecw0")
-texture_progress = ExtResource("3_8xd45")
-script = ExtResource("4_643q5")
+offset_top = 1.0
+offset_right = 160.0
+offset_bottom = 145.0
+alignment = 2
+vertical = true
 
-[node name="Panel" type="TextureRect" parent="Control"]
+[node name="Panel" type="TextureRect" parent="Control/InventoryBarContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_top = 48.0
-offset_right = 64.0
-offset_bottom = 65.0
 texture = ExtResource("5_ohjpv")
+stretch_mode = 2
 
 [node name="Money" type="BoxContainer" parent="Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 37.0
-offset_top = 52.0
-offset_right = 63.0
-offset_bottom = 60.0
+offset_left = 128.0
+offset_top = 121.0
+offset_right = 154.0
+offset_bottom = 129.0
 alignment = 2
 
 [node name="CoinCount" type="Label" parent="Control/Money"]
@@ -200,23 +204,70 @@ horizontal_alignment = 2
 layout_mode = 2
 texture = ExtResource("7_reqwv")
 
-[node name="BoxContainer" type="BoxContainer" parent="Control"]
+[node name="Key" type="BoxContainer" parent="Control"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 63.0
-offset_bottom = 10.0
+offset_left = 124.0
+offset_top = 131.0
+offset_right = 150.0
+offset_bottom = 141.0
 alignment = 2
 
-[node name="Label" type="Label" parent="Control/BoxContainer"]
+[node name="KeyLabel" type="Label" parent="Control/Key"]
 texture_filter = 1
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_h6brr")
 
-[node name="TextureRect" type="TextureRect" parent="Control/BoxContainer"]
+[node name="KeyTexture" type="TextureRect" parent="Control/Key"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("8_bbss4")
+
+[node name="HealthData" type="BoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 124.0
+offset_right = 118.0
+offset_bottom = 132.0
+
+[node name="HealthLabel" type="Label" parent="Control/HealthData"]
+texture_filter = 1
+layout_mode = 2
+text = "HP"
+label_settings = SubResource("LabelSettings_ted7t")
+
+[node name="PlayerHealthProg" type="TextureProgressBar" parent="Control/HealthData"]
+texture_filter = 1
+layout_mode = 2
+texture_under = ExtResource("1_3el8q")
+texture_over = ExtResource("2_pecw0")
+texture_progress = ExtResource("3_8xd45")
+script = ExtResource("4_643q5")
+
+[node name="InputLabels" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 160.0
+offset_bottom = 145.0
+
+[node name="JLabel" type="Label" parent="Control/InputLabels"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 116.0
+offset_right = 21.0
+offset_bottom = 124.0
+text = "J"
+label_settings = SubResource("LabelSettings_4qgkb")
+
+[node name="KLabel" type="Label" parent="Control/InputLabels"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 42.0
+offset_top = 116.0
+offset_right = 49.0
+offset_bottom = 124.0
+text = "K"
+label_settings = SubResource("LabelSettings_4qgkb")
 
 [node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false

@@ -11,6 +11,8 @@ func _ready():
 func _physics_process(delta):
 	if player_chase:
 		position += (player.position - position)/speed
+		if(!player.player_alive):
+			player_chase = false
 
 
 
@@ -20,7 +22,6 @@ func _on_detection_area_body_entered(body):
 	
 
 func _on_detection_area_body_exited(body):
-	player = null
 	player_chase = false
 
 

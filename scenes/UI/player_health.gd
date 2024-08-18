@@ -2,7 +2,7 @@ extends TextureProgressBar
 
 class_name PlayerHealth
 
-@onready var main_scene = get_parent().get_parent().get_parent()
+@onready var main_scene = get_parent().get_parent().get_parent().get_parent()
 var player_health : int
 
 func _ready():
