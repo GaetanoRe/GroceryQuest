@@ -16,6 +16,7 @@ var player_health : float
 
 signal player_dead
 signal room_change
+signal player_loc_change
 
 func _ready():
 	spawn_player()
@@ -23,7 +24,9 @@ func _ready():
 	player_health = player.health
 	load_room()
 	
+	# Connect Signals
 	room_change.connect(change_room)
+	player_loc_change.connect(relocate_player)
 
 func _process(delta):
 	
@@ -44,6 +47,9 @@ func change_room(scene : String):
 			add_child(next_room)
 			curr_room = next_room
 			break
+
+func relocate_player(loc : Vector2):
+	player.position = loc
 
 func load_room():
 	curr_room = init_room.instantiate()

@@ -2,8 +2,8 @@ extends Body
 
 class_name Player
 
-#Combat variables
-@onready var weapon = $Weapon
+
+# Other variables
 @onready var animation_player = $AnimationPlayer
 @onready var coin = 0
 @onready var key = 1
@@ -14,10 +14,10 @@ var player_alive = true
 
 var spawn_loc : Vector2
 
+@export var inventory : Array[ItemData]
 
 signal hurt
 signal dead
-signal opened_door
 
 func _ready():
 	add_to_group("player")
@@ -27,7 +27,6 @@ func _ready():
 	knockback_velocity = Vector2.ZERO
 	spawn_loc = Vector2(10,20)
 	global_position = spawn_loc
-	opened_door.connect(change_loc)
 	
 
 func _process(delta):
@@ -96,12 +95,7 @@ func _on_player_hurtbox_body_entered(body):
 func _on_player_hurt4box_body_exited(body):
 	if body.is_in_group("enemy"):
 		enemy_in_range = false
-		
 
 
-func _on_deal_attack_timer_timeout():
-	$deal_attack_timer.stop()
-
-func change_loc(pos : Vector2):
-	position = pos
-	print(position)
+func item_timer_timeout() -> void:
+	$ItemTimer.stop()

@@ -7,8 +7,6 @@ var room_name
 @export var floor = 1
 @export var doors : Array[Door]
 
-signal opened_door
-
 
 var item_taken : bool = false
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn8s541u8ygu7"
-path="res://.godot/imported/GQ_SwordAnim.png-bb136a57620ffc0392047e0867f5809d.ctex"
+uid="uid://dk1yr6rutxb5w"
+path="res://.godot/imported/GQ_BaggetetetAnimation.png-77e3a0a945a560af2eecef07112746b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/GQ_SwordAnim.png"
-dest_files=["res://.godot/imported/GQ_SwordAnim.png-bb136a57620ffc0392047e0867f5809d.ctex"]
+source_file="res://assets/weapons/GQ_BaggetetetAnimation.png"
+dest_files=["res://.godot/imported/GQ_BaggetetetAnimation.png-77e3a0a945a560af2eecef07112746b4.ctex"]
 
 [params]
 
