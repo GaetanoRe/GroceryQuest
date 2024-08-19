@@ -6,3 +6,4 @@ class_name ItemData
 @export var sprite : SpriteFrames
 @export var hitbox_dimensions : RectangleShape2D
 @export var animation_time : float
+@export var icon : Texture

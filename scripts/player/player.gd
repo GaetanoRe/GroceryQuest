@@ -72,13 +72,13 @@ func deal_with_damage(dam : int, knock : int):
 	super(dam, knock)
 	match current_dir:
 		"up":
-			knockback_velocity = Vector2(0, 1) * 100
+			knockback_velocity = Vector2(0, 1) * knock
 		"down":
-			knockback_velocity = Vector2(0, -1) * 100
+			knockback_velocity = Vector2(0, -1) * knock
 		"left":
-			knockback_velocity = Vector2(1, 0) * 100
+			knockback_velocity = Vector2(1, 0) * knock
 		"right":
-			knockback_velocity = Vector2(-1, 0) * 100
+			knockback_velocity = Vector2(-1, 0) * knock
 	$AttackCooldown.start()
 	print(health)
 

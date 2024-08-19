@@ -11,6 +11,7 @@ class_name Item
 # basic item components
 @export var equipped_items : Array[ItemData]
 @onready var item_data : ItemData = equipped_items[0]
+@onready var item_icon : Texture = item_data.icon
 
 
 
@@ -62,6 +63,7 @@ func _process(delta):
 # Function will be called when game starts with weapon and will be called when player gets new weapon
 func update_item():
 	if(item_data):
+		item_icon = item_data.icon
 		sprite_animations = item_data.sprite
 		animation_time = item_data.animation_time
 		sprite.sprite_frames = sprite_animations
@@ -71,6 +73,7 @@ func update_item():
 		if(item_data is WeaponData):
 			weapon_type = item_data.weapon_type
 			damage = item_data.damage
+			knockback = item_data.knockback
 			hitbox.add_to_group("player_weapons")
 		else:
 			hitbox.add_to_group("player_items")

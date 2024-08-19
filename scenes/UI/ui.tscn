@@ -164,13 +164,13 @@ _data = {
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="Control" type="Control" parent="."]
+[node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InventoryBarContainer" type="BoxContainer" parent="Control"]
+[node name="InventoryBarContainer" type="BoxContainer" parent="PlayerUI"]
 layout_mode = 0
 offset_top = 1.0
 offset_right = 160.0
@@ -178,13 +178,13 @@ offset_bottom = 145.0
 alignment = 2
 vertical = true
 
-[node name="Panel" type="TextureRect" parent="Control/InventoryBarContainer"]
+[node name="Panel" type="TextureRect" parent="PlayerUI/InventoryBarContainer"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("5_ohjpv")
 stretch_mode = 2
 
-[node name="Money" type="BoxContainer" parent="Control"]
+[node name="Money" type="BoxContainer" parent="PlayerUI"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 128.0
@@ -193,18 +193,18 @@ offset_right = 154.0
 offset_bottom = 129.0
 alignment = 2
 
-[node name="CoinCount" type="Label" parent="Control/Money"]
+[node name="CoinCount" type="Label" parent="PlayerUI/Money"]
 layout_direction = 3
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_fmhnu")
 horizontal_alignment = 2
 
-[node name="Coin" type="TextureRect" parent="Control/Money"]
+[node name="Coin" type="TextureRect" parent="PlayerUI/Money"]
 layout_mode = 2
 texture = ExtResource("7_reqwv")
 
-[node name="Key" type="BoxContainer" parent="Control"]
+[node name="Key" type="BoxContainer" parent="PlayerUI"]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 131.0
@@ -212,31 +212,31 @@ offset_right = 150.0
 offset_bottom = 141.0
 alignment = 2
 
-[node name="KeyLabel" type="Label" parent="Control/Key"]
+[node name="KeyLabel" type="Label" parent="PlayerUI/Key"]
 texture_filter = 1
 layout_mode = 2
 text = "0"
 label_settings = SubResource("LabelSettings_h6brr")
 
-[node name="KeyTexture" type="TextureRect" parent="Control/Key"]
+[node name="KeyTexture" type="TextureRect" parent="PlayerUI/Key"]
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("8_bbss4")
 
-[node name="HealthData" type="BoxContainer" parent="Control"]
+[node name="HealthData" type="BoxContainer" parent="PlayerUI"]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 124.0
 offset_right = 118.0
 offset_bottom = 132.0
 
-[node name="HealthLabel" type="Label" parent="Control/HealthData"]
+[node name="HealthLabel" type="Label" parent="PlayerUI/HealthData"]
 texture_filter = 1
 layout_mode = 2
 text = "HP"
 label_settings = SubResource("LabelSettings_ted7t")
 
-[node name="PlayerHealthProg" type="TextureProgressBar" parent="Control/HealthData"]
+[node name="PlayerHealthProg" type="TextureProgressBar" parent="PlayerUI/HealthData"]
 texture_filter = 1
 layout_mode = 2
 texture_under = ExtResource("1_3el8q")
@@ -244,12 +244,12 @@ texture_over = ExtResource("2_pecw0")
 texture_progress = ExtResource("3_8xd45")
 script = ExtResource("4_643q5")
 
-[node name="InputLabels" type="Control" parent="Control"]
+[node name="Input" type="Control" parent="PlayerUI"]
 anchors_preset = 0
 offset_right = 160.0
 offset_bottom = 145.0
 
-[node name="JLabel" type="Label" parent="Control/InputLabels"]
+[node name="JLabel" type="Label" parent="PlayerUI/Input"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 14.0
@@ -259,7 +259,7 @@ offset_bottom = 124.0
 text = "J"
 label_settings = SubResource("LabelSettings_4qgkb")
 
-[node name="KLabel" type="Label" parent="Control/InputLabels"]
+[node name="KLabel" type="Label" parent="PlayerUI/Input"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 42.0
@@ -268,6 +268,39 @@ offset_right = 49.0
 offset_bottom = 124.0
 text = "K"
 label_settings = SubResource("LabelSettings_4qgkb")
+
+[node name="JIcon" type="TextureRect" parent="PlayerUI/Input"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 124.0
+offset_right = 27.0
+offset_bottom = 144.0
+
+[node name="KIcon" type="TextureRect" parent="PlayerUI/Input"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 124.0
+offset_right = 55.0
+offset_bottom = 144.0
+
+[node name="Inventory" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 161.0
+offset_bottom = 145.0
+
+[node name="TextureRect" type="TextureRect" parent="Inventory"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 37.0
+offset_top = 19.0
+offset_right = 121.0
+offset_bottom = 83.0
 
 [node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false

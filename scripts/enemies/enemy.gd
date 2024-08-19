@@ -1,6 +1,6 @@
 extends Body
 
-var player_chase = false
+@onready var player_chase = false
 var player = null
 var player_in_range = false
 var can_take_damage = true
@@ -10,9 +10,14 @@ func _ready():
 
 func _physics_process(delta):
 	if player_chase:
-		position += (player.position - position)/speed
-		if(!player.player_alive):
-			player_chase = false
+		if knockback_timer > 0:
+			knockback_timer -= delta
+			velocity = knockback_velocity
+		else:
+			velocity += (player.position - position)/speed
+			if(!player.player_alive):
+				player_chase = false
+	move_and_slide()
 
 
 
@@ -41,21 +46,18 @@ func _on_enemy_hitbox_body_exited(body):
 		
 func deal_with_damage(dam : int, knock : int) -> void:
 	super(dam, knock)
-	health = health - dam
-	match current_dir:
-		"up":
-			knockback_velocity = Vector2(0, 1) * 100
-		"down":
-			knockback_velocity = Vector2(0, -1) * 100
-		"left":
-			knockback_velocity = Vector2(1, 0) * 100
-		"right":
-			knockback_velocity = Vector2(-1, 0) * 100
-	$take_damage_cooldown.start()
+	health -= dam
+	# Calculate knockback direction based on player and enemy positions
+	var knockback_direction = (position - player.position).normalized()
+	knockback_velocity = knockback_direction * knock
+	knockback_timer = knockback_time
 	can_take_damage = false
+	$take_damage_cooldown.start()
+
 	print("slimehealth =", health)
 	if health <= 0:
 		self.queue_free()
+	
 
 
 
