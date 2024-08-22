@@ -17,7 +17,7 @@ func _physics_process(delta):
 			velocity += (player.position - position)/speed
 			if(!player.player_alive):
 				player_chase = false
-	move_and_slide()
+	super(delta)
 
 
 

@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbdj3lxxu5qb1"]
+[gd_scene load_steps=22 format=3 uid="uid://dbdj3lxxu5qb1"]
 
 [ext_resource type="Texture2D" uid="uid://bp8fpwgh7cwx3" path="res://assets/ui/healthProgBottom.png" id="1_3el8q"]
 [ext_resource type="Texture2D" uid="uid://c3e4bqviojr4g" path="res://assets/ui/healthProgTop.png" id="2_pecw0"]
 [ext_resource type="Texture2D" uid="uid://corr3j5x5ldib" path="res://assets/ui/healthProgProgress.png" id="3_8xd45"]
-[ext_resource type="Script" path="res://scenes/UI/player_health.gd" id="4_643q5"]
+[ext_resource type="Script" path="res://scripts/UI/player_ui.gd" id="4_643q5"]
 [ext_resource type="Texture2D" uid="uid://c3kday3nnkrki" path="res://assets/ui/inventory_bar.png" id="5_ohjpv"]
 [ext_resource type="FontFile" uid="uid://ev2cjbe05gj4" path="res://assets/font/PixelOperator8.ttf" id="6_su5n4"]
 [ext_resource type="Texture2D" uid="uid://jijisaaxdwdh" path="res://assets/sprites/coin.png" id="7_reqwv"]
 [ext_resource type="Texture2D" uid="uid://dhavi8k6esi7e" path="res://assets/sprites/key.png" id="8_bbss4"]
+[ext_resource type="Script" path="res://scenes/UI/inventory.gd" id="9_d7gnm"]
+[ext_resource type="Texture2D" uid="uid://cgga7jf6farne" path="res://assets/ui/inventory_menu.png" id="9_mmg2b"]
+[ext_resource type="Script" path="res://scripts/UI/pause_menu.gd" id="10_s6kjp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fmhnu"]
 font = ExtResource("6_su5n4")
@@ -22,6 +25,10 @@ font = ExtResource("6_su5n4")
 font_size = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_4qgkb"]
+font = ExtResource("6_su5n4")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_n7scb"]
 font = ExtResource("6_su5n4")
 font_size = 8
 
@@ -155,11 +162,40 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Inventory:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_37dl5"]
+resource_name = "inventory_slide"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inventory:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 145), Vector2(0, 120), Vector2(0, 100), Vector2(0, 80), Vector2(0, 60), Vector2(0, 40), Vector2(0, 20), Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvajs"]
 _data = {
 "GameOver": SubResource("Animation_7bhdw"),
-"RESET": SubResource("Animation_j3k6p")
+"RESET": SubResource("Animation_j3k6p"),
+"inventory_slide": SubResource("Animation_37dl5")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -169,6 +205,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_643q5")
 
 [node name="InventoryBarContainer" type="BoxContainer" parent="PlayerUI"]
 layout_mode = 0
@@ -212,7 +249,7 @@ offset_right = 150.0
 offset_bottom = 141.0
 alignment = 2
 
-[node name="KeyLabel" type="Label" parent="PlayerUI/Key"]
+[node name="KeyCount" type="Label" parent="PlayerUI/Key"]
 texture_filter = 1
 layout_mode = 2
 text = "0"
@@ -242,7 +279,6 @@ layout_mode = 2
 texture_under = ExtResource("1_3el8q")
 texture_over = ExtResource("2_pecw0")
 texture_progress = ExtResource("3_8xd45")
-script = ExtResource("4_643q5")
 
 [node name="Input" type="Control" parent="PlayerUI"]
 anchors_preset = 0
@@ -284,23 +320,158 @@ offset_right = 55.0
 offset_bottom = 144.0
 
 [node name="Inventory" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 161.0
 offset_bottom = 145.0
+script = ExtResource("9_d7gnm")
+inventory_menu = Array[Texture]([null, null, null, null, null, null, null, null, null, null])
 
-[node name="TextureRect" type="TextureRect" parent="Inventory"]
+[node name="InventoryMenu" type="TextureRect" parent="Inventory"]
+texture_filter = 1
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 160.0
+offset_bottom = 145.0
+texture = ExtResource("9_mmg2b")
+
+[node name="InventoryMenuSlots" type="Control" parent="Inventory/InventoryMenu"]
+anchors_preset = 0
+offset_right = 76.0
+offset_bottom = 99.0
+
+[node name="0" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 25.0
+offset_bottom = 27.0
+
+[node name="1" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 27.0
+
+[node name="2" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 8.0
+offset_right = 71.0
+offset_bottom = 28.0
+
+[node name="3" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 30.0
+offset_right = 25.0
+offset_bottom = 50.0
+
+[node name="4" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 30.0
+offset_right = 48.0
+offset_bottom = 50.0
+
+[node name="5" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 30.0
+offset_right = 71.0
+offset_bottom = 50.0
+
+[node name="6" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 53.0
+offset_right = 25.0
+offset_bottom = 73.0
+
+[node name="7" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 54.0
+offset_right = 48.0
+offset_bottom = 74.0
+
+[node name="8" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 53.0
+offset_right = 71.0
+offset_bottom = 73.0
+
+[node name="9" type="TextureRect" parent="Inventory/InventoryMenu/InventoryMenuSlots"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 76.0
+offset_right = 48.0
+offset_bottom = 96.0
+
+[node name="InventoryMap" type="TextureRect" parent="Inventory/InventoryMenu"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 25.0
+offset_right = 152.0
+offset_bottom = 90.0
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = 37.0
-offset_top = 19.0
-offset_right = 121.0
-offset_bottom = 83.0
+offset_right = 159.0
+offset_bottom = 145.0
+script = ExtResource("10_s6kjp")
+
+[node name="Panel" type="Panel" parent="PauseMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -70.5
+offset_right = 32.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 10.0
+offset_right = 73.0
+offset_bottom = 65.0
+
+[node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Resume"
+flat = true
+
+[node name="Settings" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+flat = true
+
+[node name="TextEdit" type="Label" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 5.0
+offset_right = 54.0
+offset_bottom = 16.0
+text = "Pause"
+label_settings = SubResource("LabelSettings_n7scb")
 
 [node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false

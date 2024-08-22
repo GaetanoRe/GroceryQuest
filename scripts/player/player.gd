@@ -5,6 +5,7 @@ class_name Player
 
 # Other variables
 @onready var animation_player = $AnimationPlayer
+@onready var equipped_items = $Equipped_Items
 @onready var coin = 0
 @onready var key = 1
 
@@ -60,7 +61,7 @@ func _physics_process(delta):
 		else:
 			animation_player.play("idle_" + current_dir)
 		# Move the player
-		move_and_slide()
+		super(delta)
 
 		if health <= 0:
 			player_alive = false # Add death screen and respawn here
