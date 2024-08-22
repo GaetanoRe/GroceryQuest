@@ -8,7 +8,7 @@ func _ready():
 func _process(delta):
 	
 	if(Input.is_action_just_pressed("pause") and !global.is_paused):
-		show()
+		hide()
 	
 	if(Input.is_action_just_pressed("pause") and global.is_paused):
-		hide()
+		show()
