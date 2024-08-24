@@ -14,8 +14,7 @@ var knockback_strength : float
 var knockback_resistence : float
 
 func _physics_process(delta):
-	if(!global.is_paused):
-		move_and_slide()
+	move_and_slide()
 		
 
 func deal_with_damage(dam : int, knock : int):

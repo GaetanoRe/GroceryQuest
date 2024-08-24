@@ -440,30 +440,6 @@ offset_bottom = 40.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 10.0
-offset_right = 73.0
-offset_bottom = 65.0
-
-[node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-text = "Resume"
-flat = true
-
-[node name="Settings" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Settings
-"
-flat = true
-
-[node name="Quit" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Quit"
-flat = true
-
 [node name="TextEdit" type="Label" parent="PauseMenu/Panel"]
 layout_mode = 0
 offset_left = 19.0
@@ -472,6 +448,30 @@ offset_right = 54.0
 offset_bottom = 16.0
 text = "Pause"
 label_settings = SubResource("LabelSettings_n7scb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 12.0
+offset_right = 109.0
+offset_bottom = 113.0
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Resume"
+flat = true
+
+[node name="Settings" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+flat = true
 
 [node name="GameOver_blackscreen" type="ColorRect" parent="."]
 visible = false
@@ -505,3 +505,7 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_cvajs")
 }
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
