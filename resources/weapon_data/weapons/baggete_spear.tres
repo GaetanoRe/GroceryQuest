@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=10 format=3 uid="uid://b5pdvcqw7w0k6"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=11 format=3 uid="uid://b5pdvcqw7w0k6"]
 
 [ext_resource type="Script" path="res://scripts/res_scripts/weapon_data.gd" id="1_03m8i"]
+[ext_resource type="Texture2D" uid="uid://c2f8384m0b6qh" path="res://assets/ui/baguette_spear_icon.png" id="1_vqqsx"]
 [ext_resource type="Texture2D" uid="uid://dk1yr6rutxb5w" path="res://assets/weapons/GQ_BaggetetetAnimation.png" id="2_6i6pu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kkjoi"]
@@ -53,8 +54,9 @@ animations = [{
 script = ExtResource("1_03m8i")
 weapon_type = 1
 damage = 10.0
-knockback = 37.0
+knockback = 120.0
 item_type = 0
 sprite = SubResource("SpriteFrames_jsips")
 hitbox_dimensions = SubResource("RectangleShape2D_kkjoi")
 animation_time = 0.0
+icon = ExtResource("1_vqqsx")

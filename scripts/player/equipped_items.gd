@@ -58,6 +58,10 @@ func _process(delta):
 			await item_timer.timeout
 			hitbox_col.disabled = true
 			sprite.hide()
+	
+
+func _physics_process(delta: float) -> void:
+	rotate(get_angle_to(get_global_mouse_position()))
 		
 
 # Function will be called when game starts with weapon and will be called when player gets new weapon

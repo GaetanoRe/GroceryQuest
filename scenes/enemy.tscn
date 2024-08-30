@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://chsj7f8vcnqds"]
+[gd_scene load_steps=9 format=3 uid="uid://chsj7f8vcnqds"]
 
 [ext_resource type="Texture2D" uid="uid://cmr1yfws58ofn" path="res://icon.svg" id="1_dvlhr"]
 [ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_uxv53"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ryj"]
-size = Vector2(56, 47)
+[ext_resource type="Script" path="res://state_machine.gd" id="3_her7h"]
+[ext_resource type="Script" path="res://follow_state.gd" id="4_4xi6h"]
+[ext_resource type="Script" path="res://idle_state.gd" id="5_l7s5h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkegf"]
 size = Vector2(6, 6)
@@ -23,16 +23,6 @@ metadata/_edit_group_ = true
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_dvlhr")
 
-[node name="detection_area" type="Area2D" parent="."]
-visible = false
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
-light_mask = 2
-visibility_layer = 2
-shape = SubResource("RectangleShape2D_x1ryj")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nkegf")
 
@@ -49,8 +39,18 @@ wait_time = 0.4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtBox"]
 shape = SubResource("RectangleShape2D_xe6si")
 
-[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_her7h")
+initial_state = NodePath("IdleState")
+
+[node name="FollowState" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("4_4xi6h")
+body = NodePath("../..")
+
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("body")]
+script = ExtResource("5_l7s5h")
+body = NodePath("../..")
+
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

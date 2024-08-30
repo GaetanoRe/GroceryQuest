@@ -9,7 +9,6 @@ class_name Player
 @onready var coin = 0
 @onready var key = 1
 
-var enemy_in_range = false
 var enemy_attack_cooldown = true
 var player_alive = true	
 
@@ -89,13 +88,8 @@ func _on_attack_cooldown_timeout():
 
 func _on_player_hurtbox_body_entered(body):
 	if body.is_in_group("enemy"):
-		enemy_in_range = true
 		deal_with_damage(10, body.knockback_strength - knockback_resistence)
 
-
-func _on_player_hurt4box_body_exited(body):
-	if body.is_in_group("enemy"):
-		enemy_in_range = false
 
 
 func item_timer_timeout() -> void:

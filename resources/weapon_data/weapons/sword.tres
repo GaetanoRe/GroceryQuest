@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="WeaponData" load_steps=9 format=3 uid="uid://cffwjgkd5vpm"]
+[gd_resource type="Resource" script_class="WeaponData" load_steps=10 format=3 uid="uid://cffwjgkd5vpm"]
 
+[ext_resource type="Texture2D" uid="uid://dnu1ls2nlpdxe" path="res://assets/ui/sword_icon.png" id="1_5im7c"]
 [ext_resource type="Script" path="res://scripts/res_scripts/weapon_data.gd" id="1_muvjt"]
 [ext_resource type="Texture2D" uid="uid://bn8s541u8ygu7" path="res://assets/weapons/GQ_SwordAnim.png" id="2_338pe"]
 
@@ -51,8 +52,9 @@ animations = [{
 script = ExtResource("1_muvjt")
 weapon_type = 0
 damage = 20.0
-knockback = 75.0
+knockback = 140.0
 item_type = 0
 sprite = SubResource("SpriteFrames_evfl8")
 hitbox_dimensions = SubResource("RectangleShape2D_m1vcv")
 animation_time = 0.0
+icon = ExtResource("1_5im7c")

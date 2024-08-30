@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd7ecr112ptl3"]
+[gd_scene load_steps=6 format=3 uid="uid://cd7ecr112ptl3"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_l64jn"]
 [ext_resource type="PackedScene" uid="uid://dbdj3lxxu5qb1" path="res://scenes/UI/ui.tscn" id="3_2vev7"]
+[ext_resource type="Script" path="res://scenes/keymaster.gd" id="4_0ogoe"]
 [ext_resource type="PackedScene" uid="uid://ctvmtep3edk17" path="res://scenes/keymaster.tscn" id="4_ov1qd"]
 [ext_resource type="PackedScene" uid="uid://wq2f26vs7flm" path="res://scenes/generation_scenes/world.tscn" id="4_xdca8"]
 
 [node name="MainScene" type="Node"]
+process_mode = 3
 script = ExtResource("1_l64jn")
 
 [node name="UI" parent="." instance=ExtResource("3_2vev7")]
 
 [node name="Keymaster" parent="." instance=ExtResource("4_ov1qd")]
+script = ExtResource("4_0ogoe")
 
 [node name="World" parent="." instance=ExtResource("4_xdca8")]
+process_mode = 1

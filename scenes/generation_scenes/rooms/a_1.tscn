@@ -60,10 +60,12 @@ sources/1 = SubResource("TileSetAtlasSource_vmrlk")
 [node name="A1" type="Node2D"]
 script = ExtResource("1_dnlp6")
 
-[node name="Enemy" parent="." instance=ExtResource("2_q1tng")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_q1tng")]
 position = Vector2(114, 34)
 
-[node name="Enemy2" parent="." instance=ExtResource("2_q1tng")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("2_q1tng")]
 position = Vector2(155, 92)
 
 [node name="TileMap" type="TileMap" parent="."]

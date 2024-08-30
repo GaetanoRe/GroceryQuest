@@ -11,6 +11,8 @@ enum room_type {Regular, Item , Switch ,Passage}
 @export var floor : int
 @export var doors : Array
 
+@export var enemies : Array
+
 # Room Specific data
 
 # Item and Passage

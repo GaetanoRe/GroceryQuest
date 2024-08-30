@@ -199,6 +199,7 @@ _data = {
 }
 
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
@@ -285,24 +286,24 @@ anchors_preset = 0
 offset_right = 160.0
 offset_bottom = 145.0
 
-[node name="JLabel" type="Label" parent="PlayerUI/Input"]
+[node name="Item1" type="Label" parent="PlayerUI/Input"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 14.0
+offset_left = 9.0
 offset_top = 116.0
-offset_right = 21.0
+offset_right = 30.0
 offset_bottom = 124.0
-text = "J"
+text = "LM"
 label_settings = SubResource("LabelSettings_4qgkb")
 
-[node name="KLabel" type="Label" parent="PlayerUI/Input"]
+[node name="Item2" type="Label" parent="PlayerUI/Input"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 42.0
+offset_left = 37.0
 offset_top = 116.0
-offset_right = 49.0
-offset_bottom = 124.0
-text = "K"
+offset_right = 58.0
+offset_bottom = 125.0
+text = "RM"
 label_settings = SubResource("LabelSettings_4qgkb")
 
 [node name="JIcon" type="TextureRect" parent="PlayerUI/Input"]
@@ -418,7 +419,6 @@ offset_right = 152.0
 offset_bottom = 90.0
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 159.0

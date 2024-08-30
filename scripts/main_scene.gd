@@ -11,6 +11,8 @@ var player : Player
 var animation_player : AnimationPlayer
 var is_paused = false
 
+signal open_final_door
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
